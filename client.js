@@ -1,3 +1,9 @@
+$(document).ready(beginJQ);
+function beginJQ(){
+  console.log('Hello');
+  $('#startApp').on('click', onClick);
+}
+
 const employees = [
   {
     name: 'Atticus',
@@ -41,3 +47,69 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+console.log('');
+
+function employeeUpdate(employee){
+  let employeeName = {
+    name: employee.name,
+    employeeNumber: employee.employeeNumber,
+    annualSalary: employee.annualSalary,
+    reviewRating: employee.reviewRating
+  }
+  console.log('employeeUpdate: ', employeeName);
+}
+
+for(let i=0; i<employees.length; i++){
+employeeUpdate(employees[i]);
+}
+
+console.log('');
+
+function bonusCalc(employee){
+  let bonus = {
+    name: employee.name,
+    bonusPercentage: 0,
+    totalCompensation: 0,
+    totalBonus: 0,
+    employeeNumber: employee.employeeNumber
+  }
+  if(employee.reviewRating === 3){
+    bonus.bonusPercentage += 4;
+  }
+  else if(employee.reviewRating === 4){
+    bonus.bonusPercentage += 6;
+  }
+  else if(employee.reviewRating === 5){
+    bonus.bonusPercentage += 10;
+  }
+  if(employee.employeeNumber.length === 4){
+    bonus.bonusPercentage += 5;
+  }
+  if(employee.annualSalary > 65000){
+    bonus.bonusPercentage --;
+  }
+  if(bonus.bonusPercentage > 13){
+    bonus.bonusPercentage = 13;
+  }
+  if(bonus.bonusPercentage < 0){
+    bonus.bonusPercentage = 0;
+  }
+  bonus.totalCompensation = (employee.annualSalary * (1 + bonus.bonusPercentage * 0.01));
+  bonus.totalBonus = (employee.annualSalary * (bonus.bonusPercentage * 0.01));
+  console.log('bonusCalc: ', bonus);
+  $('#output').append(`<div id="employeeContainer">`);
+  $('#output').append(`<p> Employee Name: ${bonus.name} </p>`);
+  $('#output').append(`<p> Bonus Percentage: ${bonus.bonusPercentage}% </p>`);
+  $('#output').append(`<p> Total Compensation: ${bonus.totalCompensation} </p>`);
+  $('#output').append(`<p> Total Bonus: ${bonus.totalBonus} </p>`);
+  $('#output').append(`</div>`);
+}
+function onClick(){
+  for(let i=0; i<employees.length; i++){
+    bonusCalc(employees[i]);
+  }
+}
+
+for(let i=0; i<employees.length; i++){
+  bonusCalc(employees[i]);
+}

@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: aqua;
+}
+h1 {
+    padding: 20px;
+    text-align: center;
+    background-color: #008080;
+    color: #CCAE14;
+    font-size: 2.5rem;
+}
+
+#buttonContainer {
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    text-align: center;
+    color: #004040;
+    font-size: 2rem;
+    background-color: #CCAE14;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+button:hover {
+    background-color: #004040;
+    color: #CCAE14;
+}
+
+.arrow {
+    color: #CCAE14;
+    font-size: 2rem;
+    animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+    50% {
+      opacity: 0;
+    }
+  }
+
+#employeeContainer {
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 2px solid #12B3B3;
+}
+
+p {
+    text-align: center;
+    color: #004040;
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
